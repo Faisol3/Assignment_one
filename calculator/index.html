@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>javascript: calculate two numbers</title>
+    <meta charset="windows-1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="cs/bootstrap.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <label class="form-label">Number 1:</label>
+          <input class="form-control" id="n1" /><br /><br />
+
+          <label class="form-label">Number 2:</label>
+          <input class="form-control" id="n2" /><br /><br />
+
+          <label class="form-label">Select a operator </label>
+          <select id="operators">
+            <option value="+">Addition(+)</option>
+            <option value="-">Subtraction(-)</option>
+            <option value="/">Division(/)</option>
+            <option value="X">Multiplication(X)</option>
+          </select>
+          <br /><br />
+          <button class="btn btn-outline-primary" onclick="calc();">
+            calculate
+          </button>
+          <div class="alert" id="result"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function calc() {
+        let n1 = parseFloat(document.getElementById("n1").value);
+        var n2 = parseFloat(document.getElementById("n2").value);
+
+        var oper = document.getElementById("operators").value;
+
+        if (!n1 || !n2) {
+          if (!n1) {
+            document.getElementById("result").classList.add("alert-danger");
+            document.getElementById("result").innerHTML = "n1 is required";
+          } else if (!n2) {
+            document.getElementById("result").classList.add("alert-danger");
+            document.getElementById("result").innerHTML = "n2 is required";
+          } else {
+            document.getElementById("result").classList.add("alert-danger");
+            document.getElementById("result").innerHTML =
+              "Please enter a number";
+          }
+        } else if (oper === "+") {
+          document.getElementById("result").classList.add("alert-primary");
+          document.getElementById("result").innerHTML = n1 + n2;
+        } else if (oper === "-") {
+          document.getElementById("result").classList.add("alert-primary");
+          document.getElementById("result").innerHTML = n1 - n2;
+        } else if (oper === "/") {
+          document.getElementById("result").classList.add("alert-primary");
+          document.getElementById("result").innerHTML = n1 / n2;
+        } else if (oper === "X") {
+          document.getElementById("result").classList.add("alert-primary");
+          document.getElementById("result").innerHTML = n1 * n2;
+        }
+      }
+    </script>
+
+     
+  </body>
+</html>
